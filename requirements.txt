@@ -1,0 +1,6 @@
+flask
+os
+nexmo
+jsom
+datetime
+werkzeug
