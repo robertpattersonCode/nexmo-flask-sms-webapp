@@ -1,4 +1,3 @@
-#!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
 
@@ -13,11 +12,6 @@ import json
 import datetime
 import os
 import sys
-
-
-# from .utils.after_this_response import AfterThisResponse
-
-
 
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'png', 'jpg', 'jpeg', 'gif'])
@@ -44,14 +38,14 @@ def sms(filename):
     
     snt = 0
     now = datetime.datetime.now()
-    client = nexmo.Client(key='84ed6852', secret='JibCuseSVvI0Hp1F')
+    client = nexmo.Client(key='', secret='')
 
     print("starting " + fromNum)
     print(message)
     client.send_message(
         {
                 "from": fromNum,
-                "to": "12124611779",
+                "to": "",
                 "text": "starting : " + message + " from: " + fromNum + " at: " + now.strftime("%Y-%m-%d %H:%M")
         }
     )
@@ -64,7 +58,7 @@ def sms(filename):
     client.send_message(
     {
                 "from": fromNum,
-                "to": "19176885123",
+                "to": "",
                 "text": "starting : " + message + "\n      from: " + fromNum + "\n           at: " + now.strftime("%H:%M  %Y-%m-%d")
         }
     )
@@ -74,11 +68,11 @@ def sms(filename):
     client.send_message(
         {
                 "from": fromNum,
-            "to": "17166660179",
+            "to": "",
                 "text": "starting : " + message + " from: " + fromNum + " at: " + now.strftime("%Y-%m-%d %H:%M")
         }
     )
-    print("sending 17166660179 " + message)
+    print("sending  " + message)
     time.sleep(2)
     print("""
 
@@ -127,7 +121,7 @@ def sms(filename):
     client.send_message(
         {
                 "from": fromNum,
-                "to": "19176885123",
+                "to": "",
                 "text": fromNum + " finshed at: " + now.strftime(" %H:%M  %Y-%m-%d")
         }
     )
@@ -139,21 +133,21 @@ def sms(filename):
     client.send_message(
         {
                 "from": fromNum,
-                "to": "12124611779",
+                "to": "",
                 "text": fromNum + " finshed at : " + now.strftime(" %H:%M  %Y-%m-%d")
         }
     )
 
-    print("sending finished : 12124611779  ")
+    print("sending finished :   ")
     time.sleep(2)
     client.send_message(
         {
                 "from": fromNum,
-                "to": "17166660179",
+                "to": "",
                 "text": fromNum + " finshed at : " + now.strftime(" %H:%M  %Y-%m-%d")
         }
     )
-    print("sending finished : 17166660179  ")
+    print("sending finished :   ")
 
 
 app = Flask(__name__)
@@ -164,15 +158,6 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
-# def test():
-#     def generate():
-#         app.logger.info('request started')
-#         for i in range(5):
-#             time.sleep(1)
-#             yield 'cunt!!!'
-#         app.logger.info('request finished')
-#         yield ''
-#     return Response(generate(), mimetype='text/plain')
 
 def upload_file():
     if request.method == 'POST':
